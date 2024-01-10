@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>EGDE AS</title>
+</head>
+<body>
+    <h1>Do you need help? Ask our GPT!</h1>
+    
+    <form method="post" action="{{ url_for('get_response') }}">
+        <label for="user_input">Input:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if user_input %}
+        <p><strong>User:</strong> {{ user_input }}</p>
+    {% endif %}
+    
+    {% if gpt_response %}
+        <p><strong>GPT-3.5-turbo:</strong> {{ gpt_response }}</p>
+    {% endif %}
+</body>
+</html>
